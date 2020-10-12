@@ -1,0 +1,614 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+
+/* BASIC */
+
+html {
+    background-color: white;
+}
+
+#headerText {
+border:1px solid;
+}
+.logoutButton {
+    font-weight:900 !important;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    height: 100vh;
+}
+
+a {
+    color: #92badd;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+h2 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 40px 8px 10px 8px;
+    color: #cccccc;
+}
+
+.rTable, .formInlineTable {
+    display: table;
+    width: 100%;
+}
+
+.rTableRow {
+    display: table-row;
+}
+
+.rTableHeading {
+    display: table-header-group;
+    background-color: #ddd;
+}
+
+.rTableCell {
+    display: table-cell;
+    padding: 3px 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    height:30px !important;
+}
+.rTableHead {
+    display: table-cell;
+    padding: 3px 10px;
+    border: none;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+
+.rTableHeading {
+    display: table-header-group;
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.rTableFoot {
+    display: table-footer-group;
+    font-weight: bold;
+    background-color: #ddd;
+}
+
+.rTableBody {
+    display: table-row-group;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.displyBlock {
+    display:block !important;
+}
+.displyInlineBlock {
+    display: inline-block !important;
+}
+
+
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+/* Vertical Carousel --------------------------------------------------------------------*/
+#monSlide, #tueSlide, #wedSlide, #thuSlide, #friSlide,
+#satSlide, #sunSlide {
+    height: 70vh !important;
+    overflow-y: scroll;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px;
+}
+#monSlide {
+    background-color: aliceblue;
+}
+#tueSlide {
+    background-color: #ffe5e3;
+}
+#wedSlide {
+    background-color: #efffe3;
+}
+#thuSlide {
+    background-color:lightcyan;
+}
+#friSlide {
+    background-color:linen;
+}
+#satSlide {
+    background-color: #fcdeff;
+}
+#sunSlide {
+    background-color: #f5f5f5;
+}
+
+
+
+
+
+
+.carousel.vertical .carousel-inner {
+    height: 80vh !important;
+}
+
+    .carousel.vertical .carousel-inner > .item {
+        transition: .6s ease-in-out top;
+    }
+
+@media all and (transform-3d) {
+    .carousel.vertical .carousel-inner > .item {
+        transition: transform .6s ease-in-out;
+        backface-visibility: hidden;
+        perspective: 1000;
+    }
+
+        .carousel.vertical .carousel-inner > .item.next,
+        .carousel.vertical .carousel-inner > .item.active.right {
+            top: 0;
+            transform: translate3d(0, 100%, 0);
+        }
+
+        .carousel.vertical .carousel-inner > .item.prev,
+        .carousel.vertical .carousel-inner > .item.active.left {
+            top: 0;
+            transform: translate3d(0, -100%, 0);
+        }
+
+            .carousel.vertical .carousel-inner > .item.next.left,
+            .carousel.vertical .carousel-inner > .item.prev.right,
+            .carousel.vertical .carousel-inner > .item.active {
+                top: 0;
+                transform: translate3d(0, 0, 0);
+            }
+}
+
+.carousel.vertical .carousel-inner > .active {
+    top: 0;
+}
+
+.carousel.vertical .carousel-inner > .next,
+.carousel.vertical .carousel-inner > .prev {
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel.vertical .carousel-inner > .next {
+    left: 0;
+    top: 100%;
+}
+
+.carousel.vertical .carousel-inner > .prev {
+    left: 0;
+    top: -100%
+}
+
+    .carousel.vertical .carousel-inner > .next.left,
+    .carousel.vertical .carousel-inner > .prev.right {
+        top: 0;
+    }
+
+.carousel.vertical .carousel-inner > .active.left {
+    left: 0;
+    top: -100%;
+}
+
+.carousel.vertical .carousel-inner > .active.right {
+    left: 0;
+    top: 100%;
+}
+
+.carousel.vertical .carousel-indicators {
+    right: -60px;
+    top: 10%;
+    transform: translate(-50%);
+    bottom: auto;
+    left: auto;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    
+}
+    .carousel.vertical .carousel-indicators li {
+        display: block;
+        margin: 10px 10px;
+        text-align: right !important;
+        width: 120px !important;
+        height: 30px !important;
+        border: 1px solid #ccc !important;
+    }
+.indicators-inside {
+    font-size: 20px !important;
+   padding-right:5px;
+}
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+/**--------------------------------------------------------------------------------*/
+
+
+/* STRUCTURE */
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+}
+
+#formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+#formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.registerLink{
+    padding-bottom: 10px;
+}
+
+/* TABS */
+
+h2.inactive {
+    color: #cccccc;
+}
+
+h2.active {
+    color: #0d0d0d;
+    border-bottom: 2px solid #5fbae9;
+}
+
+
+
+/* FORM TYPOGRAPHY*/
+/*LOGIN BUTTON*/
+input[type=button]#btnLogin, input[type=submit]#btnLogin, input[type=reset] {
+    background-color: #56baed;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+    input[type=button]#btnLogin:hover, input[type=submit]#btnLogin:hover, input[type=reset]:hover {
+        background-color: #39ace7;
+    }
+/*REGISTER*/
+input[type=button]#btnRegister, input[type=submit]#btnRegister, input[type=reset] {
+    background-color: #5cb85c;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+    input[type=button]:active, input[type=submit]:active, input[type=reset]:active
+  {
+        -moz-transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        -o-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        transform: scale(0.95);
+    }
+
+.inTableTextInput {
+    border:none !important;
+}
+
+input.inTableTextInput:active, input.inTableTextInput:focus {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+    border: 2px solid #f6f6f6;
+}
+
+.inTableTextInput:focus {
+        background-color: #fff;
+        border-bottom: 2px solid #5fbae9;
+    }
+
+.priorTxtIn {
+    width:50px !important;
+}
+
+input#login, input#password,
+input#regPassword, input#regName {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+    input[type=text]:focus, input[type=password]:focus {
+        background-color: #fff;
+        border-bottom: 2px solid #5fbae9;
+    }
+
+    input[type=text]:placeholder, input[type=password]:placeholder {
+        color: #cccccc;
+    }
+
+
+
+/* ANIMATIONS */
+
+/* Simple CSS3 Fade-in-down Animation */
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+    .fadeIn.first {
+        -webkit-animation-delay: 0.4s;
+        -moz-animation-delay: 0.4s;
+        animation-delay: 0.4s;
+    }
+
+    .fadeIn.second {
+        -webkit-animation-delay: 0.6s;
+        -moz-animation-delay: 0.6s;
+        animation-delay: 0.6s;
+    }
+
+    .fadeIn.third {
+        -webkit-animation-delay: 0.8s;
+        -moz-animation-delay: 0.8s;
+        animation-delay: 0.8s;
+    }
+
+    .fadeIn.fourth {
+        -webkit-animation-delay: 1s;
+        -moz-animation-delay: 1s;
+        animation-delay: 1s;
+    }
+
+/* Simple CSS3 Fade-in Animation */
+.underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+}
+
+.underlineHover:hover {
+    color: #0d0d0d;
+}
+
+    .underlineHover:hover:after {
+        width: 100%;
+    }
+
+
+
+/* OTHERS */
+
+*:focus {
+    outline: none;
+}
+#icon-1 {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+#icon-2 {
+    width: 30px;
+    height:30px;
+}
+.iconText {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 500;
+    color: dodgerblue;
+    border:none !important;
+    padding-left: 0px !important;
+    padding-bottom: 0px !important;
+    padding-top: 2px !important;
+    cursor:default;
+}
+/*---------------------------------------------------------------------------------*/
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px; 
+    padding-top:7px !important;
+    font-size: 18px;
+    line-height: 20px;
+}
+    .navbar-brand span:hover {
+        color: dodgerblue !important;
+        cursor:pointer!important;
+    }
+    .navbar-inverse {
+        background-color: white !important;
+        border-color: white !important;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover {
+        color: dodgerblue;       
+    }
+    .navbar-inverse .navbar-brand, .navbar-inverse .navbar-brand:hover {
+        color: dodgerblue !important;
+    }
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+
+    .navbar-toggle {
+        position: relative;
+        float: right;
+        padding: 9px 10px;
+        margin-right: 15px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        background-color: #9d9d9d !important;
+        background-image: none;
+        border: 1px solid transparent !important;
+        border-radius: 4px;
+    }
+    .navbar-toggle:hover {
+       
+        background-color: #9d9d9d !important;       
+        border: 1px solid transparent !important;
+        opacity: 0.5 !important;
+    }
+}

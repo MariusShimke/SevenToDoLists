@@ -1,0 +1,44 @@
+﻿@model MariusTodoList.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@*<h2>Login</h2>*@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="~/Images/og-image.png" id="icon-2" alt="User Icon" /><span class="btn small iconText">TODO</span>
+        </div>
+        <!-- Login Form -->
+        <form asp-action="Login" id="loginForm">
+            <h2>Login</h2>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="UserName" type="text" id="login" class="fadeIn second" placeholder="Username" />
+                <span asp-validation-for="UserName" class="displyBlock text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Password" type="password" id="password" class="fadeIn third" placeholder="Password" />
+                <span asp-validation-for="Password" class="displyBlock text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="btnLogin" type="submit" value="Login" class="btn btn-default fadeIn fourth" />
+            </div>
+            <div class="registerLink fadeIn fourth">
+                <a asp-action="Register" class="underlineHover">Create New Account</a>
+            </div>
+        </form>
+        
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

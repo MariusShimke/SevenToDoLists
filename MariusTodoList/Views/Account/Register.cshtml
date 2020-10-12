@@ -1,0 +1,67 @@
+﻿@model MariusTodoList.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+@*<h2>Register</h2>
+
+<h4>User Model</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>*@
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="~/Images/og-image.png" id="icon-2" alt="User Icon" /><span class="btn small iconText">TODO</span>
+        </div>
+        <!-- Register Form -->
+        <form asp-action="Register" id="registerForm">
+            <h2>Create Account</h2>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="UserName" type="text" id="regName" class="fadeIn second" placeholder="Username" />
+                <span asp-validation-for="UserName" class="displyBlock text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Password" type="password" id="regPassword" class="fadeIn third" placeholder="Password" />
+                <span asp-validation-for="Password" class="displyBlock text-danger"></span>              
+            </div>
+            <div class="form-group">
+                <input id="btnRegister" type="submit" value="Submit" class="btn btn-success fadeIn fourth" />
+            </div>
+            <div class="registerLink fadeIn fourth">
+                <a asp-action="Login" class="underlineHover">Login To Account</a>
+            </div>
+        </form>
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
