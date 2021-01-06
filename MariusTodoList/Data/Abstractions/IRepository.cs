@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MariusTodoList.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -16,6 +17,8 @@ namespace MariusTodoList.Data.Abstractions
 
         void Insert(T model);
         void InsertAll(List<T> models);
+
+        List<ExportAllTasksExcelDTO> GetAllTasks();
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MariusTodoList.Data.Abstractions;
+using MariusTodoList.DTO;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,13 @@ namespace MariusTodoList.Data.Implementations
         public void InsertAll(List<T> models)
         {
             _table.AddRange(models);
+        }
+
+
+        public List<ExportAllTasksExcelDTO> GetAllTasks()
+        {
+            //return _dbContext.Query<ExportAllTasksExcel>().FromSql("sp_excelExportRequests").ToList();
+            return _dbContext.Query<ExportAllTasksExcelDTO>().FromSql("SELECT * FROM TaskModels").ToList();
         }
     }
 

@@ -33,7 +33,9 @@ namespace MariusTodoList
                 options.UseInMemoryDatabase("ToDoInMemoryDB");
             });
 
-            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
+            //services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
+            services.AddDefaultIdentity<ApplicationUser>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
+
             services.ConfigureApplicationCookie(options => {
                 options.Cookie.Name = "ToDoInMemoryDB";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(20);

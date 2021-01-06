@@ -65,13 +65,21 @@ $(document).ready(function () {
         $valueSpan2.html($value2.val());
     });
 
-    
-    //var dd = new Date();
-    //var nn = dd.getDay()
-    //alert(weekday[dd.getDay()]);
+    //var tabNum = dayIndex;
+    //var hiddenDayNumber = document.getElementById("hiddenDay").value;
+    //alert(hiddenDayNumber);
+    //if (hiddenDayNumber > 0) {
+    //    tabNum = weekday.indexOf(hiddenDayNumber);
+    //}
+    //alert(tabNum);
     if ($('#carousel-vertical').carousel(dayIndex).hasClass('active')) {
        
     }
+});
+
+//Reset Hidden day number
+$('.indacator-li').click(function () {
+    document.getElementById("hiddenDay").value = 0;
 });
 
 function changeBoxValue(cb) {    

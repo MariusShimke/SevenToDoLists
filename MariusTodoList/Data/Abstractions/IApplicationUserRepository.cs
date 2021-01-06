@@ -8,6 +8,6 @@ namespace MariusTodoList.Data.Abstractions
 {
     interface IApplicationUserRepository : IRepository<ApplicationUser>
     {
-        Task<ApplicationUser> GetApplicationUser(int id);
+        Task<ApplicationUser> GetApplicationUser(int id);       
     }
 }

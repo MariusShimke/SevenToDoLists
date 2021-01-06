@@ -1,4 +1,5 @@
 ﻿using MariusTodoList.Data.Abstractions;
+using MariusTodoList.DTO;
 using MariusTodoList.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,6 +16,12 @@ namespace MariusTodoList.Data.Implementations
         public async Task<TasksModel> GetTask(int id)
         {
             return await _dbContext.TasksModel.Where(d => d.TaskID == id).Include(d => d.User).FirstOrDefaultAsync();
+        }
+
+        public List<ExportAllTasksExcelDTO> GetAllTasks()
+        {          
+            //return _dbContext.Query<ExportAllTasksExcel>().FromSql("sp_excelExportRequests").ToList();
+            return _dbContext.Query<ExportAllTasksExcelDTO>().FromSql("sp_excelExportRequests").ToList();
         }
     }
 }

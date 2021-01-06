@@ -29,6 +29,7 @@ namespace MariusTodoList.Controllers
             //_unitOfWork = unitOfWork;            
         }
 
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         [HttpGet]
         public IActionResult Login()
@@ -42,7 +43,9 @@ namespace MariusTodoList.Controllers
             ApplicationUser user = null;
             var userNameSess = HttpContext.Session.GetString("UserName");
             var userIdSess = HttpContext.Session.GetString("UserID");
-            
+
+            //var testUserName = System.Web.HttpContext.Current.User.Identity.Name;         
+
             if (userNameSess != null && userIdSess != null )                          
                 user = await _userManager.FindByIdAsync(userIdSess);            
             else
@@ -52,9 +55,11 @@ namespace MariusTodoList.Controllers
             {
                 var SignIn = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 if (SignIn.Succeeded)
-                {
+                {                   
                     HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("UserID", user.Id);
+
+                    var currentUser = await GetCurrentUserAsync();
 
                     return RedirectToAction("Index", "Tasks");
                 }

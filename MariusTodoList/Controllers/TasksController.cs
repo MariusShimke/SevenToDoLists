@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using MariusTodoList.Data.Abstractions;
+using System.Text;
+using System.IO;
 
 namespace MariusTodoList.Controllers
 {
@@ -27,7 +29,7 @@ namespace MariusTodoList.Controllers
             _userManager = userManager;
             _unitOfWork = unitOfWork;
         }
-
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         public  ApplicationUser GetCurrentUser() {
             var userNameSess = HttpContext.Session.GetString("UserName");
             var userIdSess = HttpContext.Session.GetString("UserID");
@@ -35,18 +37,20 @@ namespace MariusTodoList.Controllers
             var currentUser = userIdSess != null ?  _context.ApplicationUser.Where(x => x.Id == userIdSess).FirstOrDefault():null;
             return currentUser;
         }
-
+        
         // GET: Tasks
         public async Task<IActionResult> Index(int priority, int weekDay, string description)
         {           
             var user = GetCurrentUser();
+            var currentUser = await GetCurrentUserAsync();
+
+            ViewBag.TabNumber = description == null ? "":weekDay.ToString();
 
             if (user == null)
             {
                 ViewBag.HellowMessage = "";
                 return RedirectToAction("Login", "Account");
-            }
-                
+            }               
 
             if (description != null)
             {
@@ -83,6 +87,7 @@ namespace MariusTodoList.Controllers
 
         public void InserTask(int priority, int weekDay, string description, ApplicationUser user)
         {
+
             TasksModel tasksModel = new TasksModel();
             tasksModel.Priority = priority;
             tasksModel.Description = description;
@@ -261,6 +266,30 @@ namespace MariusTodoList.Controllers
         private bool TasksModelExists(int id)
         {
             return _context.TasksModel.Any(e => e.TaskID == id);
+        }
+
+
+        public IActionResult ExportAllTasks()
+        {
+            StringBuilder sbErrors = new StringBuilder();
+            try
+            {
+                //string reportName = "LKF_Requests";
+                //var formData = _unitOfWork.TaskRepository.GetAll();
+                //var t = new BusinessLogic.ReportExcelHelper().GetAllRequestsExcelFile(formData);
+                //var fileResult = new FileStreamResult(new MemoryStream(t.Contents), "*/*");
+                //var date = DateTime.Now.ToString("MM/dd/y");
+                //fileResult.FileDownloadName = string.Format("{0}_Report_{1}.xlsx", reportName, date);
+
+                //return fileResult;
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
