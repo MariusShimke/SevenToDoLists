@@ -21,6 +21,7 @@ namespace MariusTodoList.Data.Implementations
         public List<ExportAllTasksExcelDTO> GetAllTasks()
         {          
             //return _dbContext.Query<ExportAllTasksExcel>().FromSql("sp_excelExportRequests").ToList();
+            //Here is my extra
             return _dbContext.Query<ExportAllTasksExcelDTO>().FromSql("sp_excelExportRequests").ToList();
         }
     }
