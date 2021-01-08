@@ -282,8 +282,9 @@ namespace MariusTodoList.Controllers
                 //fileResult.FileDownloadName = string.Format("{0}_Report_{1}.xlsx", reportName, date);
 
                 //return fileResult;
-                return null;
-                //This is temHi yes
+                IActionResult fileResult = null;
+                return fileResult;
+                //This is temHi yes nnn
             }
             catch (Exception ex)
             {
